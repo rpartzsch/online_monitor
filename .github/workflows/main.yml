@@ -57,7 +57,7 @@ jobs:
           fi
 
       - name: Headless display setup
-        uses: pyvista/setup-headless-display-action@v1
+        uses: pyvista/setup-headless-display-action@v3
 
       - name: Testing on branch -> ${{github.head_ref || github.ref_name}}
         run: pytest online_monitor
