@@ -48,13 +48,18 @@ jobs:
               libgl1 \
               libxkbcommon-x11-0 \
               libxcb-cursor0 \
+              libx11-xcb1 \
+              libxcb-render0 \
+              libxcb-shape0 \
+              libxcb-xfixes0 \
               libdbus-1-3
           fi
-      - name: Headless display setup
-        uses: pyvista/setup-headless-display-action@v3
 
-      - name: Testing on branch -> ${{github.head_ref || github.ref_name}}
-        run: pytest online_monitor
+      - name: Run tests
+        env:
+          QT_QPA_PLATFORM: offscreen
+          QT_OPENGL: software
+        run: pytest -v
 
   coveralls:
 
