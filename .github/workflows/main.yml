@@ -42,7 +42,6 @@ jobs:
           if [[ "$RUNNER_OS" == "Linux" ]];
           then
             echo "Qt6 default installation on $RUNNER_OS"
-            sudo apt-get install qt6-tools
           fi
 
           if [[ "$RUNNER_OS" == "Windows" ]];
