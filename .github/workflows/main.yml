@@ -7,8 +7,6 @@ on:
   # Triggers the workflow on push or pull request events but only for the master branch
   push:
     branches:
-      - master
-      - development
   pull_request:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
@@ -38,19 +36,18 @@ jobs:
       - name: Package installation
         run: pip install -e .
 
-      - name: Qt5 defaults
+      - name: Qt6 defaults
         shell: bash -l {0}
         run: |
           if [[ "$RUNNER_OS" == "Linux" ]];
           then
-            echo "Qt5 default installation on $RUNNER_OS"
-            sudo apt-get install qttools5-dev-tools
+            echo "Qt6 default installation on $RUNNER_OS"
+            sudo apt-get install qt6-tools
           fi
 
           if [[ "$RUNNER_OS" == "Windows" ]];
           then
-            echo "Qt5 default installation on $RUNNER_OS"
-            choco install qt5-default
+            echo "Qt6 default installation on $RUNNER_OS"
           fi
 
       - name: Headless display setup
@@ -77,7 +74,7 @@ jobs:
         run: |
           pip install blosc
           pip install -e .
-          sudo apt-get install qttools5-dev-tools
+          sudo apt-get install qt6-tools
           
       - name: Headless display setup
         uses: pyvista/setup-headless-display-action@v3 
