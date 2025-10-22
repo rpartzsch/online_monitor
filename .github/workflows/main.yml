@@ -54,9 +54,11 @@ jobs:
               libxcb-xfixes0 \
               libdbus-1-3
           fi
-          
+
       - name: Headless display setup
-        uses: pyvista/setup-headless-display-action@v3
+        uses: pyvista/setup-headless-display-action@v4
+        with:
+          qt: true
 
       - name: Testing on branch -> ${{github.head_ref || github.ref_name}}
         run: pytest online_monitor
